@@ -2,7 +2,7 @@
 
 The Office Task Management System is a web application designed to help users organize and manage their tasks effectively. The system will provide features for creating, updating, and deleting tasks, as well as viewing the list of tasks. The backend will be built using Node.js and Express.js, while the frontend will be developed using HTML, CSS, and JavaScript.
 
-![Homepage](backend/images/homepage.png)
+![Homepage](BACKEND/images/homepage.png)
 
 ## Acknowledgements
 
