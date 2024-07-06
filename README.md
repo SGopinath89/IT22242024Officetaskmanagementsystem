@@ -290,5 +290,3 @@ to the backend terminal.
 ![image3](backend/images/image3.png)
 ![image4](backend/images/image4.png)
 ![image5](backend/images/image5.png)
-
-"# IT22242024Officetaskmanagementsystem" 
