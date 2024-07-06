@@ -285,8 +285,8 @@ npx nodemon
 
 to the backend terminal.
 
-![image1](backend/images/image1.png)
-![image2](backend/images/image2.png)
-![image3](backend/images/image3.png)
-![image4](backend/images/image4.png)
-![image5](backend/images/image5.png)
+![image1](BACKEND/images/image1.png)
+![image2](BACKEND/images/image2.png)
+![image3](BACKEND/images/image3.png)
+![image4](BACKEND/images/image4.png)
+![image5](BACKEND/images/image5.png)
