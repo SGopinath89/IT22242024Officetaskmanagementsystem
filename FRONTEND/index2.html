@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Lists</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index2.css">
+</head>
+
+<body>
+
+    <div class="perent">
+        <div class="left-menu">
+
+            <img class="img-info" src="https://via.placeholder.com/50" alt="">
+            <p class="info-name">Thahzeen Aafthaff</p>
+            <p class="info-email">jftaafthaff@gmail.com</p>
+
+            <p class="bottom-info">JFT Office Management System Prepared and presented by J.F.T. Aafthaff (2020/ICT/74)
+            </p>
+
+            <button class="logout"><span>Log Out</span></button>
+
+        </div>
+
+        <div class="right-menu">
+
+            <svg class="header-svg" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M23.5456 3.5H4.45471C3.2832 3.5 2.3335 4.54467 2.3335 5.83333V8.16667C2.3335 9.45533 3.2832 10.5 4.45471 10.5H23.5456C24.7171 10.5 25.6668 9.45533 25.6668 8.16667V5.83333C25.6668 4.54467 24.7171 3.5 23.5456 3.5ZM4.45471 12.8333H23.5456C24.7171 12.8333 25.6668 13.878 25.6668 15.1667V17.5C25.6668 18.7887 24.7171 19.8333 23.5456 19.8333H4.45471C3.2832 19.8333 2.3335 18.7887 2.3335 17.5V15.1667C2.3335 13.878 3.2832 12.8333 4.45471 12.8333ZM4.66683 15.1667V17.5H23.3335V15.1667H4.66683ZM4.66683 5.83333V8.16667H23.3335V5.83333H4.66683ZM16.3335 22.1667H2.3335V24.5H16.3335V22.1667Z"
+                    fill="white" />
+            </svg>
+            <p class="header-right">
+                Work Lists
+            </p>
+
+            <div id="task-list"></div>
+
+            <div id="create-task-container" style="display:none;">
+                <h2>Create Task</h2>
+                <form id="create-task-form" onsubmit="createTask(event)">
+                    <label for="description">Task Description:</label>
+                    <input type="text" id="description" name="description" required>
+                    <button type="submit">Create Task</button>
+                </form>
+            </div>
+
+            <div class="add-task" onclick="showCreateTaskForm()">
+                <svg class="svg-add" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M10.5 7.5H18V10.5H10.5V18H7.5V10.5H0V7.5H7.5V0H10.5V7.5Z" fill="white" />
+                </svg>
+                <p class="txt-add">Add a Task</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchTasks();
+        });
+
+        function fetchTasks() {
+            fetch('http://localhost:5000/task-get-all')
+                .then(response => response.json())
+                .then(tasks => {
+                    const taskList = document.getElementById('task-list');
+                    taskList.innerHTML = ''; // Clear existing tasks
+                    tasks.forEach((task, index) => {
+                        const taskItem = document.createElement('ul');
+                        taskItem.className = 'list-1';
+                        taskItem.style.top = `${141 + index * 71}px`; // Adjust vertical spacing dynamically
+
+                        taskItem.innerHTML = `
+                            <li class="item">
+                                <label>
+                                    <div class="custom-radio">
+                                        <input type="radio" name="radio" value="radio">
+                                        <div class="ellipse"></div>
+                                    </div>
+                                    <input type="text" class="radio-button" value="${task.description}">
+                                </label>
+                                <svg class="svg-pencil" onclick="updateTask('${task._id}', this)" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12.375 1.125C12.9699 1.125 13.4853 1.36068 13.8987 1.7774L16.2244 4.10308C16.6414 4.5201 16.875 5.03183 16.875 5.625C16.875 6.21433 16.6433 6.82569 16.2244 7.24454L7.75148 15.7135C7.16243 16.393 6.32743 16.8104 5.35095 16.8767H2.25H1.125V15.7517L1.12865 12.5603C1.20035 11.6728 1.61295 10.8476 2.22971 10.3049L10.756 1.77863C11.1745 1.35808 11.7848 1.125 12.375 1.125ZM3.77052 11.9431C3.53927 12.1476 3.39621 12.4338 3.375 12.6509V14.6278L5.27151 14.6296C5.5729 14.6082 5.85345 14.468 6.10593 14.1811L11.0355 9.25149L8.74969 6.96568L3.77052 11.9431ZM10.341 5.37498L12.6265 7.6605L14.6132 5.67381L12.328 3.38864L10.341 5.37498Z"
+                                        fill="#979797" />
+                                </svg>
+                                <h2 class="edit" onclick="updateTask('${task._id}', this)">Edit</h2>
+                                <svg class="svg-cros" onclick="deleteTask('${task._id}')" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M7.00008 8.59098L11.5362 13.1266L13.127 11.5358L8.59137 6.99969L13.127 2.46405L11.5362 0.873291L7.00008 5.40939L2.46446 0.873291L0.873699 2.46405L5.40932 6.99969L0.873699 11.5358L2.46446 13.1266L7.00008 8.59098Z"
+                                        fill="#979797" />
+                                </svg>
+                                <h2 class="delete" onclick="deleteTask('${task._id}')">Delete</h2>
+                            </li>
+                        `;
+
+                        taskList.appendChild(taskItem);
+                    });
+                });
+        }
+
+        function showCreateTaskForm() {
+            const createTaskContainer = document.getElementById('create-task-container');
+            createTaskContainer.style.display = createTaskContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function createTask(event) {
+            event.preventDefault();
+            const description = document.getElementById('description').value;
+
+            fetch('http://localhost:5000/task-create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ description }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    fetchTasks(); // Refresh the task list
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+            document.getElementById('create-task-form').reset();
+            showCreateTaskForm(); // Hide the form after submission
+        }
+
+        function updateTask(id, element) {
+            const taskDescription = element.closest('.item').querySelector('.radio-button').value;
+
+            fetch(`http://localhost:5000/task-update/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ description: taskDescription }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('Edit Successfully ');
+                    fetchTasks(); // Refresh the task list
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function deleteTask(id) {
+            fetch(`http://localhost:5000/task-delete/${id}`, {
+                method: 'DELETE',
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    fetchTasks(); // Refresh the task list
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+
+</body>
+
+</html>

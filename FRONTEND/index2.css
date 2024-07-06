@@ -1,0 +1,382 @@
+.left-menu {
+    width: 402px;
+    height: 1024px;
+    background-color: #FFFFFF;
+    border: 1px solid black;
+
+}
+
+.perent {
+    display: inline-flex;
+}
+
+
+
+.img-info {
+
+    width: 60px;
+    height: 60px;
+    top: 74px;
+    left: 63px;
+    position: absolute;
+
+}
+
+.info-name {
+    position: absolute;
+    width: 143px;
+    height: 19px;
+    top: 89px;
+    left: 133px;
+    font-family: SF Pro Display;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.09px;
+    text-align: left;
+    color: #000000;
+
+
+}
+
+.info-email {
+    position: absolute;
+    width: 111px;
+    height: 14px;
+    top: 111px;
+    left: 134px;
+    font-family: SF Pro Display;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.32px;
+    text-align: left;
+    color: #000000;
+
+
+}
+
+.bottom-info {
+    position: absolute;
+    width: 196px;
+    height: 42px;
+    top: 866px;
+    left: 103px;
+    font-family: SF Pro Display;
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 14.32px;
+    text-align: center;
+    color: #000000;
+
+}
+
+.logout {
+    position: absolute;
+    width: 330px;
+    height: 50px;
+    top: 927px;
+    left: 36px;
+    border-radius: 10px;
+    background-color: #4488C9;
+    border: none;
+
+    span {
+        width: 58px;
+        height: 19px;
+        font-family: SF Pro Display;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19.09px;
+        text-align: left;
+        color: #FFFFFF;
+        ;
+
+    }
+}
+
+.right-menu {
+    width: 1038px;
+    height: 1024px;
+    background-color: #B7CBF3;
+
+}
+
+.header-svg {
+    /* display: inline-flex; */
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 90px;
+    left: 473px;
+    padding: 3.5px 2.33px 3.5px 2.33px;
+
+}
+
+.header-right {
+    position: absolute;
+    width: 147px;
+    height: 36px;
+    top: 86px;
+    left: 516px;
+    font-family: SF Pro Display;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 35.8px;
+    text-align: left;
+    color: #FFFFFF;
+
+}
+
+
+
+.list-1 {
+    position: absolute;
+    list-style: none;
+    width: 896px;
+    height: 61px;
+    top: 141px;
+    left: 472px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    font-family: SF Pro Display;
+    /* row-gap: 40px; */
+    
+}
+
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.custom-radio {
+    position: relative;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin-right: 20px;
+    /* Space between the radio button and the label */
+}
+
+.custom-radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ellipse {
+    position: absolute;
+    width: 22px;
+    left: 15px;
+    height: 22px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    /* Ellipse shape */
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.custom-radio input[type="radio"]:checked~.ellipse {
+    background-color: #244c97;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.radio-button {
+    /* position: absolute; */
+    /* overflow-x: auto; */
+    font-family: SF Pro Display;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23.87px;
+    text-align: left;
+    width: 600px;
+    height: 24px;
+    color: #000000;
+    align-items: center;
+    outline: none;
+    /* padding-bottom: 5px; */
+}
+
+.edit {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    top: 40px;
+    left: 757px;
+    font-family: SF Pro Display;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 8.35px;
+    text-align: left;
+    color: #000000;
+}
+
+.delete {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    top: 40px;
+    left: 810px;
+    font-family: SF Pro Display;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 8.35px;
+    text-align: left;
+    color: #000000;
+}
+
+.svg-pencil {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 12px;
+    left: 759px;
+    padding: 1.13px 1.13px 1.12px 1.13px;
+}
+
+.svg-cros {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 13px;
+    left: 815px;
+    padding: 1.13px 1.13px 1.12px 1.13px;
+}
+
+.add-task {
+    position: absolute;
+    width: 896px;
+    height: 61px;
+    top: 908px;
+    left: 472px;
+    background-color: #9CACCC;
+    border-radius: 10px;
+    
+    
+
+}
+
+.svg-add {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 21px;
+    left: 18px;
+    color: #FFFFFF;
+
+
+}
+
+.txt-add {
+    width: 102px;
+    height: 24px;
+    left: 55px;
+    top: 18px;
+    position: absolute;
+    font-family: SF Pro Display;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 23.87px;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+
+
+
+
+#create-task-container {
+    display: none;
+    position: absolute;
+    width: 400px;
+    padding: 20px;
+    top: 200px;
+    left: 520px;
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+#create-task-container h2 {
+    font-family: SF Pro Display;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+#create-task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#create-task-form label {
+    font-family: SF Pro Display;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+#create-task-form input[type="text"] {
+    font-family: SF Pro Display;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+#create-task-form button {
+    font-family: SF Pro Display;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #4488C9;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.create-task-btn-container {
+    position: absolute;
+    width: 896px;
+    height: 61px;
+    top: 908px;
+    left: 472px;
+    background-color: #9CACCC;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.create-task-btn-container .svg-add {
+    width: 18px;
+    height: 18px;
+    fill: #FFFFFF;
+    margin-right: 10px;
+}
+
+.create-task-btn-container .txt-add {
+    font-family: SF Pro Display;
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
